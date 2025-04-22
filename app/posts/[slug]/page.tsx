@@ -3,11 +3,10 @@ import NewsletterForm from '@/components/newsletter-form'
 import { getPostBySlug, getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import { ArrowLeftIcon } from '@radix-ui/react-icons'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import React, { Component } from 'react'
+import React from 'react'
 
 export async function generateStaticParams() {
   const posts = await getPosts()

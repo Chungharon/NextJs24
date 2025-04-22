@@ -24,7 +24,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
     const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
     const { data, content } = matter(fileContent)
     return { metadata: { ...data, slug }, content }
-  } catch (error) {
+  } catch {
     return null
   }
 }
