@@ -9,10 +9,8 @@ import { notFound } from 'next/navigation'
 import React from 'react'
 
 export async function generateStaticParams() {
-  const posts = await getPosts()
-  const slugs = posts.map(post => ({ slug: post.slug }))
-
-  return slugs
+  const posts = await getPosts();
+  return posts.map(post => ({ slug: post.slug }));
 }
 
 
