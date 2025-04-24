@@ -7,7 +7,7 @@ export default function Intro() {
       <div className='mt-2 flex-1 md:mt-0'>
         <h1 className='title no-underline'>Hey, I&#39;m Haron.</h1>
         <p className='mt-3 font-light text-muted-foreground'>
-          I&#39;m a software engineer based in Nairobi, Kenya. I&#39;m
+          I&#39;m a Software & DevOps Engineer based in Nairobi, Kenya. I&#39;m
           passionate about learning new technologies and sharing knowledge with
           others.
         </p>
@@ -17,8 +17,8 @@ export default function Intro() {
           className='flex-1 rounded-lg grayscale'
           src={authorImage}
           alt='Haron Ngaira'
-          width={175}
-          height={175}
+          width={180}
+          height={180}
           priority
         />
       </div>
