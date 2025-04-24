@@ -13,7 +13,8 @@ export async function generateStaticParams() {
   return posts.map(post => ({ slug: post.slug }));
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
+export default async function Post(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const { slug } = params;
   const post = await getPostBySlug(slug);
 
