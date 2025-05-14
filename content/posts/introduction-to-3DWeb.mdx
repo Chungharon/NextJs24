@@ -1,0 +1,181 @@
+---
+  title: Introduction to 3D Web Applications📱.
+  summary: Getting Started with TypeScript, Three.js, and Spline for 3D Web Applications.
+  image: /images/posts/3D.webp
+  author: 'Haron Ngaira'
+  publishedAt: '2025-01-30'
+---
+
+## Introduction
+
+In the realm of web development, creating immersive 3D experiences is becoming increasingly popular. Tools like Three.js and Spline are leading the charge, enabling developers and designers to craft stunning 3D graphics and animations directly in the browser. However, managing complex 3D scenes and ensuring code quality can be challenging, especially with JavaScript's dynamic nature. This is where TypeScript comes into play, offering static typing and enhancing the development experience. In this guide, we'll explore how to integrate TypeScript with Three.js and Spline to build robust and maintainable 3D web applications.
+
+## Setting Up a TypeScript Project with Three.js
+
+### Step 1: Initialize a New Project
+
+Start by creating a new project folder and initializing it with npm:
+
+```bash
+mkdir threejs-typescript-spline
+cd threejs-typescript-spline
+npm init -y
+```
+
+### Step 2: Install Dependencies
+
+Install Three.js and the TypeScript compiler:
+
+```bash
+npm install three @types/three typescript
+```
+
+### Step 3: Configure TypeScript
+
+Create a `tsconfig.json` file to configure TypeScript:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}
+```
+
+### Step 4: Create a Basic Three.js Scene
+
+Write your first TypeScript file, `app.ts`, to set up a basic Three.js scene:
+
+```typescript
+import * as THREE from 'three';
+
+// Scene setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Add a cube
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+camera.position.z = 5;
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+animate();
+```
+
+### Step 5: Compile and Run
+
+Compile the TypeScript code and run the application:
+
+```bash
+tsc
+node dist/app.js
+```
+
+Open your browser to `http://localhost:3000` to see a rotating green cube.
+
+## Integrating Spline with Three.js
+
+### Step 1: Design Your 3D Model with Spline
+
+Use Spline to design your 3D model. For this example, create a simple 3D text or shape and export it as a `.spline` file.
+
+### Step 2: Export the Model
+
+Export your Spline model in a format compatible with Three.js, such as `.glb` (GL Transmission Format).
+
+### Step 3: Load the Model in Three.js
+
+Modify your `app.ts` file to load the Spline model:
+
+```typescript
+import * as THREE from 'three';
+
+// Scene setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Load the Spline model
+const loader = new THREE.GLTFLoader();
+loader.load('model.glb', (gltf) => {
+  scene.add(gltf.scene);
+});
+
+camera.position.z = 5;
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+animate();
+```
+
+### Step 4: Animate the Model
+
+Enhance the animation by adding interactivity or more complex animations:
+
+```typescript
+// Add orbital controls for better interaction
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+
+// Animation loop with damping
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
+}
+animate();
+```
+
+## Best Practices for Using TypeScript with Three.js and Spline
+
+### 1. **Use Type Definitions**
+
+Ensure you have the latest type definitions for Three.js to leverage TypeScript's full potential.
+
+### 2. **Organize Your Code**
+
+Separate your code into modules or classes for better maintainability, especially in large projects.
+
+### 3. **Leverage TypeScript's Features**
+
+Utilize TypeScript features like interfaces, generics, and enums to write cleaner and more maintainable code.
+
+### 4. **Optimize Performance**
+
+Keep an eye on performance metrics. Use TypeScript's type system to help catch potential issues early.
+
+### 5. **Stay Updated**
+
+Regularly update your dependencies and type definitions to benefit from the latest features and improvements.
+
+## Conclusion
+
+Combining TypeScript with Three.js and Spline opens up new possibilities for creating robust and visually stunning 3D web applications. TypeScript's static typing enhances code quality and maintainability, while Three.js and Spline provide the tools needed to bring your 3D visions to life. By following the steps outlined in this guide, you can set up a powerful development environment that leverages the best of modern web technologies.
+
+Whether you're building interactive 3D product demonstrations, immersive gaming experiences, or engaging data visualizations, the combination of TypeScript, Three.js, and Spline empowers you to create exceptional 3D web applications with confidence and precision.

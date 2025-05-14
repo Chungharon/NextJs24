@@ -1,0 +1,67 @@
+---
+  title: Introduction to Testing Automation with Selenium
+  summary: Selenium is one of the most widely used open-source Web UI automation testing tools.
+  image: /images/posts/selenium.webp
+  author: 'Haron Ngaira'
+  publishedAt: '2024-12-15'
+---
+
+This section covers the introduction and setup part of the Selenium tutorial. In addition, it covers the usage of basic Selenium commands. You will be using these commands during the automation of web-based applications.
+
+## What is Selenium?
+
+Selenium provides a set of tools for automating web browsers across various platforms. It includes:([Selenium][1], [Selenium][2])
+
+* **Selenium WebDriver**: A programming interface for controlling browsers.
+* **Selenium IDE**: A browser extension for recording and playing back tests.
+* **Selenium Grid**: A tool for running tests on multiple machines simultaneously.([edureka.co][3], [Wikipedia][4])
+
+Selenium supports several programming languages, including Java, Python, C#, Ruby, and JavaScript, allowing for flexibility in test script development.
+
+## Why Use Selenium?
+
+* **Cross-Browser Compatibility**: Selenium supports all major browsers, including Chrome, Firefox, Safari, and Edge.
+* **Multi-Language Support**: Write tests in your preferred programming language.
+* **Parallel Test Execution**: With Selenium Grid, run tests concurrently across different environments.
+* **Integration with CI/CD**: Easily integrate with tools like Jenkins for continuous testing.([LambdaTest][5])
+
+## How to Use Selenium
+
+### 1. Install Selenium
+
+To get started with Selenium in Python, install the Selenium package using pip:
+
+```bash
+pip install selenium
+```
+
+Ensure you have the appropriate WebDriver for your browser (e.g., ChromeDriver for Google Chrome) and that it's accessible in your system's PATH.&#x20;
+
+### 2. Write a Simple Test Script
+
+Here's an example of a Selenium script in Python that opens a webpage:
+
+```python
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get("https://www.example.com")
+print(driver.title)
+driver.quit()
+```
+
+This script launches Chrome, navigates to "[https://www.example.com](https://www.example.com)", prints the page title, and then closes the browser.
+
+### 3. Utilize Advanced Features
+
+Selenium 4 introduces several new features:
+
+* **Native Support for Chrome DevTools Protocol**: Interact with browser internals like network conditions and geolocation.&#x20;
+* **Improved Window and Tab Management**: Easily create and switch between new windows or tabs.
+* **Relative Locators**: Locate elements based on their position relative to other elements.([BrowserStack][6])
+
+## Conclusion
+
+Selenium remains a leading choice for web automation, offering robust features and broad support across browsers and programming languages. Whether you're performing functional testing, scraping data, or automating repetitive tasks, Selenium provides the tools necessary to streamline your web interactions.
+
+
